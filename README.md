@@ -1,1 +1,1 @@
-This is a template readme file to enforce main default branch. Edit this file as you see fit.
+Web for Content Authors and Scientists, 2021. Group exercise.
