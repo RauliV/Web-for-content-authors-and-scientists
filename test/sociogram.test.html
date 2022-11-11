@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+
+  <!-- Styles to make test results look nice -->
+  <link rel="stylesheet" type="text/css" href="libs/mocha.css" />
+  <base href="../." target="_blank">
+  <title>SOCIOGRAM TEST RESULT</title>
+</head>
+
+<body>
+
+  <p style="background-color: fuchsia; border: 1px solid;">To run this test, open your <b>git repository from root</b> in VSCode, and  
+    <b>sociogram.test.html</b> with LiveServer.
+  </p>
+
+  <!-- Test results are appended inside this div -->
+  <div id="mocha"></div>
+
+  <div class="container-fluid mt-3 d-none">
+    <!-- ------------------------------------------------------------------------ -->
+    <!-- SOCIOGRAM SECTION START -->
+    <div class="card shadow p-3 my-3" id="sociogram" style="min-width: 600px">
+    </div>
+    <!-- SOCIOGRAM SECTION END -->
+
+    <!-- ------------------------------------------------------------------------ -->
+  </div>
+
+  <div id="test" style="min-width: 600px">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+
+  <!-- Load necessary libraries (mocha, chai, etc) -->
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="test/libs/chai.js"></script>
+  <script src="test/libs/mocha.js"></script>
+
+  <!-- Initialize mocha -->
+  <script class="mocha-init">
+    mocha.setup("bdd");
+    mocha.checkLeaks();
+  </script>
+
+  <!--
+      Load all application related files
+      (only minimal required files to make the tests and functions to run)
+    -->
+  <script>
+    // Mock functions
+    function addTech(
+      term,
+      coauthorsSelectElementId = "coauthors-select-term"
+    ) {
+      const techList = document.querySelector(`#${coauthorsSelectElementId}`);
+      console.log("techList: ", techList);
+      // techList.append(`<option value="${term}">${term}</option>`);
+      techList.innerHTML = `<option value="${term}">${term}</option>`;
+    }
+    // function removeSearchOption(
+    //   term,
+    //   coauthorsSelectElementId = "coauthors-select-term"
+    // ) { }
+    function removeCheckboxItem(
+      text,
+      techsCheckboxAreaId = "bcr-techs-checkbox"
+    ) { }
+    function addCheckboxItem(
+      text,
+      techsCheckboxAreaId = "bcr-techs-checkbox"
+    ) { }
+  </script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="js/force.js"></script>
+  <script type="text/javascript" src="js/coauthors.js"></script>
+  <script type="text/javascript" src="js/coauthorsjson.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/todo.js"></script>
+
+
+  <!-- <script>
+    initCoauthorsjson(window)
+  </script> -->
+  <script class="mocha-exec">
+    fetch('./index.html')
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (body) {
+        const testSection = document.querySelector('#test');
+        testSection.innerHTML = body;
+        testSection.querySelector('#todo').style.display = "none";
+        testSection.querySelector('#bcr-section').style.display = "none";
+        testSection.querySelector('#coauthorsjson-section').style.display = "none";
+        initCoauthorsjson(testSection);
+        const TECHNOLOGIES = ["javascript%functional"];
+        addTech(TECHNOLOGIES[0]);
+        return search(TECHNOLOGIES[0]);
+      })
+      .then(data => {
+        mocha.run();
+        
+        // // Create the event.
+        // const event = new CustomEvent('mocha', { detail: elem.dataset.time });     
+        // this.dispatchEvent(event);
+      });
+  </script>
+
+  <script src="test/sociogram/sociogram.test.js"></script>
+</body>
+
+</html>

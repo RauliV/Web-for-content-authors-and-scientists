@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+			crossorigin="anonymous"
+		/>
+
+		<!-- Styles to make test results look nice -->
+		<link rel="stylesheet" href="libs/mocha.css" />
+		<title>BAR CHART RACE TEST</title>
+	</head>
+
+	<body>
+		<div class="container mt-5">
+			<h1 class="text-center">BAR CHART RACE FUNCTION TEST</h1>
+			<!-- Test results are appended inside this div -->
+			<div id="mocha"></div>
+		</div>
+		<div class="container-fluid mt-3 d-none" id="test-area">
+			<!-- ------------------------------------------------------------------------ -->
+			<!-- TO DO SECTION START -->
+			<div class="card shadow p-3 my-3" id="todo" style="min-width: 600px">
+				<h3 class="diplay-3 text-center">Add or Remove Terms</h3>
+				<form id="todo-form">
+					<div class="input-group mb-3">
+						<input
+							type="text"
+							id="todo-input"
+							name="todo-input"
+							class="form-control"
+							placeholder="Technologies"
+							aria-label="Technologies"
+							aria-describedby="todo-update-input"
+						/>
+						<button
+							class="btn btn-primary"
+							type="submit"
+							id="todo-update-input"
+						>
+							Add
+						</button>
+					</div>
+				</form>
+				<div>
+					<ul class="list-group" id="todo-list">
+						<!-- TODO: LIST ITEMS GOES HERE -->
+					</ul>
+				</div>
+			</div>
+			<!-- TO DO SECTION END -->
+			<!-- ------------------------------------------------------------------------ -->
+			<!-- BAR CHART RACE SECTION START-->
+
+			<div
+				id="bcr-section"
+				class="card shadow w-75 mx-auto my-3 p-5"
+				style="min-width: 1100px; min-height: 800px"
+			>
+				<h3 class="diplay-3 text-center">Bar Chart Race</h3>
+				<div
+					id="bcr-techs-checkbox"
+					class="my-2 d-flex justify-content-evenly flex-wrap"
+				>
+					<!-- TODO: TECH CHECKBOXES GO HERE -->
+				</div>
+				<div id="bar-chart-race" class="border mx-auto"></div>
+				<div class="card-body mx-auto">
+					<button id="bar-chart-race-start" class="btn btn-primary">
+						Start
+					</button>
+				</div>
+			</div>
+
+			<!-- BAR CHART RACE SECTION END -->
+
+			<!-- ------------------------------------------------------------------------ -->
+		</div>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+			crossorigin="anonymous"
+		></script>
+
+		<!-- Load necessary libraries (mocha, chai, etc) -->
+		<script src="https://d3js.org/d3.v6.min.js"></script>
+		<script src="libs/chai.js"></script>
+		<script src="libs/mocha.js"></script>
+		<script src="libs/sinon.js"></script>
+
+		<!-- Initialize mocha -->
+		<script class="mocha-init">
+			mocha.setup("bdd");
+			mocha.checkLeaks();
+
+			// all publicly available stuff mocha should be aware of
+			// mocha.globals(["formattedSOFData","SOFData"]);
+		</script>
+
+		<!--
+      Load all application related files
+      (only minimal required files to make the tests and functions to run)
+	  
+    -->
+	<script>
+		// Mock functions
+		function addSearchOption(
+			term,
+			coauthorsSelectElementId = "coauthors-select-term"
+		) {}
+		function removeSearchOption(
+			term,
+			coauthorsSelectElementId = "coauthors-select-term"
+		) {}
+	</script>
+		<script src="../js/utils.js"></script>
+		<script src="../js/todo.js"></script>
+		<script src="../js/barChartRace.js"></script>
+		<script src="../js/stackoverflowUtils.js"></script>
+
+		<!-- Load data for tests -->
+		<script src="./barchartrace/SOFData.js"></script>
+		<script src="./barchartrace/formattedData.js"></script>
+
+		<!-- Load tests in the order you want them to be executed -->
+		<script src="./barchartrace/addCheckboxItem.test.js"></script>
+		<script src="./barchartrace/removeCheckboxItem.test.js"></script>
+		<script src="./barchartrace/getCheckedItems.test.js"></script>
+		<script src="./barchartrace/fetchSOFData.test.js"></script>
+		<script src="./barchartrace/formatSOFData.test.js"></script>
+
+		<!-- Run mocha -->
+		<script class="mocha-exec">
+			mocha.run();
+		</script>
+	</body>
+</html>

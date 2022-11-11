@@ -1,0 +1,28 @@
+/* Put your styles here  */
+
+#todo-list {
+	padding: 0;
+}
+
+#todo-list li {
+	font-size: larger;
+	display: block;
+	padding: 0.5rem;
+	border-bottom: 2px solid #888;
+}
+
+#todo-list li:hover {
+	cursor: pointer;
+	text-decoration: line-through;
+}
+
+#todo {
+	margin: auto;
+	width: 50%;
+	min-width: 600px;
+}
+
+#bar-chart-race {
+	width: 960px;
+	height: 600px;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mocha Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles to make test results look nice -->
+    <link rel="stylesheet" href="libs/mocha.css" />
+  </head>
+  <body>
+    <!-- Test results are appended inside this div -->
+    <div id="mocha"></div>
+
+    <!-- Load necessary libraries (mocha, d3, etc) -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="libs/chai.js"></script>
+    <script src="libs/mocha.js"></script>
+
+    <!-- Initialize mocha -->
+    <script class="mocha-init">
+      mocha.setup('bdd');
+      mocha.checkLeaks();
+
+      // all publicly available stuff mocha should be aware of
+      mocha.globals(['d3']);
+    </script>
+
+    <!--
+      Load all application related files
+      (only minimal required files to make the tests and functions to run)
+    -->
+    <script src="example/publ.js"></script>
+    <script src="../js/coauthors.js"></script>
+
+    <!-- Load tests in the order you want them to be executed -->
+    <script src="example/publications.test.js"></script>
+    <script src="example/years.test.js"></script>
+
+    <!-- Run mocha -->
+    <script class="mocha-exec">
+      mocha.run();
+    </script>
+  </body>
+</html>

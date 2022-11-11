@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles to make test results look nice -->
+    <link rel="stylesheet" href="libs/mocha.css" />
+    <title>TODO Test</title>
+  </head>
+
+  <body>
+    <!-- Test results are appended inside this div -->
+    <div id="mocha"></div>
+
+    <div class="d-none" id="test-area">
+      <form id="test-form">
+        <input type="text" id="test-input" name="todo-input" />
+        <button type="submit" id="test-update-input">Add</button>
+      </form>
+      <div>
+        <ul id="test-list">
+        </ul>
+      </div>
+    </div>
+
+    <!-- Load necessary libraries (mocha, chai, etc) -->
+    <script src="libs/chai.js"></script>
+    <script src="libs/sinon.js"></script>
+    <script src="libs/mocha.js"></script>
+    <script src="libs/test-utils.js"></script>
+
+    <!-- Initialize mocha -->
+    <script class="mocha-init">
+      mocha.setup('bdd');
+      mocha.checkLeaks();
+      mocha.globals(['addCheckboxItem', 'addSearchOption', 'removeCheckboxItem', 'removeSearchOption']);
+    </script>
+
+    <!--
+      Load all application related files
+      (only minimal required files to make the tests and functions to run)
+    -->
+    <script src="../js/utils.js"></script>
+    <script src="../js/todo.js"></script>
+
+    <!-- Load tests in the order you want them to be executed -->
+    <script src="./todo/hooks.test.js"></script>
+    <script src="./todo/addTodoItem.test.js"></script>
+    <script src="./todo/removeTodoItem.test.js"></script>
+    <script src="./todo/initTodo.test.js"></script>
+
+    <!-- Run mocha -->
+    <script class="mocha-exec">
+      mocha.run();
+    </script>
+  </body>
+</html>

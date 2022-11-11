@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Library Search Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles to make test results look nice -->
+    <link rel="stylesheet" href="libs/mocha.css" />
+  </head>
+  <body>
+    <!-- Test results are appended inside this div -->
+    <div id="mocha"></div>
+
+    <!--
+      Test HTML for addSearchOption(), removeSearchOption(), getSearchOption(),
+      and initCoauthors()
+    -->
+    <div id="test-section" class="d-none">
+      <form id="test-form">
+        <select name="" id="test-select">
+        </select>
+        <button type="submit">Search</button>
+      </form>
+      <div id="test-table"></div>
+      <div>
+        <iframe
+          src="library-search/iframe.html"
+          id="test-iframe"
+          loading="lazy"
+          height="500"
+          width="1000"
+        ></iframe>
+      </div>
+      <div>
+        <button type="button" id="test-btn">Sociogram</button>
+      </div>
+    </div>
+
+    <!-- Load necessary libraries -->
+    <script src="libs/chai.js"></script>
+    <script src="libs/sinon.js"></script>
+    <script src="libs/mocha.js"></script>
+
+    <!-- Initialize mocha -->
+    <script class="mocha-init">
+      mocha.setup('bdd');
+      mocha.checkLeaks();
+
+      // all publicly available stuff mocha should be aware of
+      mocha.globals(['publicationsData']);
+    </script>
+
+    <!--
+      Load all application related files
+      (only minimal required files to make the tests and functions to run)
+    -->
+    <script src="../js/utils.js"></script>
+    <script src="../js/coauthors.js"></script>
+
+    <!-- Load tests in the order you want them to be executed -->
+    <script src="libs/test-utils.js"></script>
+    <script src="library-search/publ.js"></script>
+    <script src="library-search/publications.test.js"></script>
+    <script src="library-search/years.test.js"></script>
+    <script src="library-search/rowdata.test.js"></script>
+    <script src="library-search/librarysearchdata.test.js"></script>
+    <script src="library-search/addsearchoption.test.js"></script>
+    <script src="library-search/removesearchoption.test.js"></script>
+    <script src="library-search/getsearchoption.test.js"></script>
+    <script src="library-search/initcoauthors.test.js"></script>
+    <script src="library-search/initsendtocoautorjson.test.js"></script>
+
+    <!-- Run mocha -->
+    <script class="mocha-exec">
+      mocha.run();
+    </script>
+  </body>
+</html>

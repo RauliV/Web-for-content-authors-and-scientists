@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="author" content="onni.hartikainen@tuni.fi,rauli.virtanen@tuni.fi,tommi.salonen@tuni.fi">
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="./css/barChartRace.css" />
+		<link rel="stylesheet" href="./css/styles.css" />
+		<title>WEB CAIS - FRONTEND</title>
+	</head>
+
+	<body>
+		<a href="summary.html" target="_blank" id="webdev">WebDev summary</a>
+		<div class="container-fluid mt-3">
+      
+			<!-- ------------------------------------------------------------------------ -->
+			<!-- TO DO SECTION START -->
+			<div class="card shadow p-3 my-3" id="todo" style="min-width: 600px">
+				<h3 class="diplay-3 text-center">Add or Remove Terms</h3>
+				<form id="todo-form">
+					<div class="input-group mb-3">
+						<input
+							type="text"
+							id="todo-input"
+							name="todo-input"
+							class="form-control"
+							placeholder="Technologies"
+							aria-label="Technologies"
+							aria-describedby="todo-update-input"
+						/>
+						<button
+							class="btn btn-primary"
+							type="submit"
+							id="todo-update-input"
+						>
+							Add
+						</button>
+					</div>
+				</form>
+				<div>
+					<ul class="list-group" id="todo-list">
+						<!-- TODO: LIST ITEMS GOES HERE -->
+					</ul>
+				</div>
+			</div>
+			<!-- TO DO SECTION END -->
+
+			<!-- ------------------------------------------------------------------------ -->
+
+			<!-- BAR CHART RACE SECTION START-->
+
+			<div
+				id="bcr-section"
+				class="card shadow w-75 mx-auto my-3 p-5"
+				style="min-width: 1100px; min-height: 800px"
+			>
+				<h3 class="diplay-3 text-center">Bar Chart Race</h3>
+				<div
+					id="bcr-techs-checkbox"
+					class="my-2 d-flex justify-content-evenly flex-wrap"
+				>
+					<!-- TODO: TECH CHECKBOXES GO HERE -->
+				</div>
+				<div id="bar-chart-race" class="border mx-auto"></div>
+				<div class="card-body mx-auto">
+					<button id="bar-chart-race-start" class="btn btn-primary">
+						Start
+					</button>
+				</div>
+			</div>
+
+			<!-- BAR CHART RACE SECTION END -->
+
+			<!-- ------------------------------------------------------------------------ -->
+			
+      <!-- COAUTHORS SEARCH SECTION START -->
+			<div
+				class="card shadow w-75 mx-auto my-3 p-5"
+				style="min-width: 1100px; min-height: 250px"
+				id="coauthors-section"
+			>
+				<h3 class="diplay-3 text-center">Library search (Coauthors)</h3>
+				<div class="my-2">
+					<div class="d-flex align-items-center">
+						<form id="coauthors-form" class="flex-grow-1">
+							<div class="d-flex align-items-center">
+								<select
+									id="coauthors-select-term"
+									name="coauthors-select-term"
+									class="form-select m-1"
+									aria-label="select searchterm"
+								>
+									<option disabled selected value="">Select search term</option>
+									<!-- TODO: OPTIONS GO HERE -->
+								</select>
+								<button type="submit" class="pointer btn btn-primary m-1 px-4">
+									Search
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div
+					id="coauthors-table-area"
+					class="d-flex justify-content-center"
+				></div>
+			</div>
+			<!-- COAUTHORS SEARCH SECTION END -->
+
+			<!-- ------------------------------------------------------------------------ -->
+
+			<!-- SOCIOGRAM SECTION START -->
+			<div
+				id="coauthorsjson-section"
+				class="card shadow w-75 mx-auto my-3 p-5"
+				style="min-width: 1100px"
+			>
+				<h3 class="diplay-3 text-center">Sociogram (Coauthorsjson)</h3>
+				<div class="border">
+					<iframe
+						src="./coauthorsjson.html"
+						id="coauthorsjson-iframe"
+						loading="lazy"
+						height="500"
+						width="1000"
+					></iframe>
+				</div>
+				<div class="card-body mx-auto">
+					<button
+						type="button"
+						data-bs-target="#sociogram-modal"
+						class="btn btn-primary"
+						id="coauthorsjson-btn"
+					>
+						Sociogram
+					</button>
+				</div>
+			</div>
+			<!-- SOCIOGRAM SECTION END -->
+      <!-- ------------------------------------------------------------------------ -->
+      
+		</div>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://d3js.org/d3.v6.min.js"></script>
+		<script src="./js/utils.js"></script>
+		<script src="./js/todo.js"></script>
+		<script src="js/barChartRace.js"></script>
+		<script src="js/stackoverflowUtils.js"></script>
+		<script src="js/coauthors.js"></script>
+		<script src="js/index.js"></script>
+	</body>
+</html>
